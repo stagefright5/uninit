@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/stagefright5/uninit/issues"
   },
-  "homepage": "https://github.com/stagefright5/uninit#readme"
+  "homepage": "https://github.com/stagefright5/uninit#readme",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
 }
