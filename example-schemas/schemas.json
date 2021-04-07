@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "git_commit",
-                    "command": "git commit -m \"${commit message}\""
+                    "command": "git commit -m \"${commit_head}\" -m \"${commit_body}\""
                 }
             ]
         }
