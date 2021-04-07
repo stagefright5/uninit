@@ -23,10 +23,6 @@
                 {
                     "name": "create_dir",
                     "command": "mkdir ${dir_name}"
-                },
-                {
-                    "name": "create_dir",
-                    "command": "mkdir ${dir_name} && cd ${dir_name}"
                 }
             ]
         },
