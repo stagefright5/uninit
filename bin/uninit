@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
 const inquirer = require('inquirer');
-require('../lib/args')();
 const { schemas } = require('../example-schemas/schemas.json');
+const runTasks = require('../lib/run-tasks');
+const { parseCommand, replacePlaceholders } = require('../lib/parse-command');
+require('../lib/args')();
 const prompt = inquirer.createPromptModule();
 
 prompt([
@@ -22,4 +24,38 @@ prompt([
     console.log(
         `${chalk.blue('selected schema:')} ${chalk.green(selectedSchema.key)}`
     );
+    runTasks(
+        selectedSchema,
+        task =>
+            new Promise((resolve, reject) => {
+                const placeholders = parseCommand(task.command);
+                if (placeholders.length) {
+                    const questions = getUniqueQuestionsFromPlaceholders();
+                    prompt(questions)
+                        .then(placeholderAnswers => {
+                            const command = replacePlaceholders(
+                                task.command,
+                                positions,
+                                placeholderAnswers
+                            );
+                            resolve(command);
+                        })
+                        .catch(err => reject(err));
+                }
+            })
+    );
 });
+
+const getUniqueQuestionsFromPlaceholders = placeholders => {
+    const visitedKeys = {};
+    placeholders
+        .filter(pos =>
+            !visitedKeys[pos.text] ? (visitedKeys[pos.text] = true) : false
+        )
+        .map((pos, i) => ({
+            name: pos.text,
+            message: `Value for placeholder_${i}:: "${pos.text}": `,
+            type: 'input',
+            when: i === 0 || !!placeholders[i - 1],
+        }));
+};
