@@ -15,6 +15,13 @@
         "npm",
         "git"
     ],
+    "bin": {
+        "uninit": "bin/uninit.js"
+    },
+    "files": [
+        "bin",
+        "lib"
+    ],
     "author": "stagefright5",
     "license": "ISC",
     "bugs": {
