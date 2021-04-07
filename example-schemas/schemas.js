@@ -1,3 +1,5 @@
+let dir = '';
+const cwd = () => dir;
 module.exports = {
     schemas: {
         log: {
@@ -28,23 +30,35 @@ module.exports = {
             tasks: [
                 {
                     name: 'create_dir',
-                    command: 'mkdir ${dir_name} && cd ${dir_name}',
+                    command: 'mkdir ${dir_name}',
+                },
+                {
+                    name: 'cd_dir',
+                    command: function (answers) {
+                        var dir = answers.dir_name;
+                        return `cd ${answers.dir_name}`;
+                    },
+                    cwd,
                 },
                 {
                     name: 'npm_init_y',
                     command: 'npm init -y',
+                    cwd,
                 },
                 {
                     name: 'init_git',
                     command: 'git init .',
+                    cwd,
                 },
                 {
                     name: 'git_stage',
                     command: 'git add .',
+                    cwd,
                 },
                 {
                     name: 'git_commit',
                     command: 'git commit -m "${commit message}"',
+                    cwd,
                 },
             ],
         },
