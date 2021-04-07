@@ -9,9 +9,13 @@
                 }
             ]
         },
-        "npm-git": {
+        "new-npm-git": {
             "description": "initialize as an npm project and a git repo",
             "tasks": [
+                {
+                    "name": "create_dir",
+                    "command": "mkdir ${dir_name}"
+                },
                 {
                     "name": "npm_init_y",
                     "command": "npm init -y"
