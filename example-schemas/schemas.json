@@ -17,13 +17,22 @@
                 }
             ]
         },
-        "new-npm-git": {
-            "description": "initialize as an npm project and a git repo",
+        "create-new-dir": {
+            "description": "create new dir",
             "tasks": [
                 {
                     "name": "create_dir",
-                    "command": "mkdir ${dir_name} && cd ${dir_name}"
+                    "command": "mkdir ${dir_name}"
                 },
+                {
+                    "name": "create_dir",
+                    "command": "mkdir ${dir_name} && cd ${dir_name}"
+                }
+            ]
+        },
+        "new-npm-git": {
+            "description": "initialize as an npm project and a git repo",
+            "tasks": [
                 {
                     "name": "npm_init_y",
                     "command": "npm init -y"
