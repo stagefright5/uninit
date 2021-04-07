@@ -1,3 +1,25 @@
 #!/usr/bin/env node
 const chalk = require('chalk');
+const inquirer = require('inquirer');
 require('../lib/args')();
+const { schemas } = require('../example-schemas/schemas.json');
+const prompt = inquirer.createPromptModule();
+
+prompt([
+    {
+        name: 'select_schema',
+        message: 'Select a schema',
+        type: 'list',
+        choices: function () {
+            return Object.keys(schemas).map(s => ({
+                name: `${s} (${schemas[s].description})`,
+                value: { ...schemas[s], key: s },
+            }));
+        },
+    },
+]).then(answers => {
+    const selectedSchema = answers.select_schema;
+    console.log(
+        `${chalk.blue('selected schema:')} ${chalk.green(selectedSchema.key)}`
+    );
+});
