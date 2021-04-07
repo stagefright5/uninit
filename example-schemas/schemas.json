@@ -1,5 +1,14 @@
 {
     "schemas": {
+        "log-windows": {
+            "description": "Log user input",
+            "tasks": [
+                {
+                    "name": "echo",
+                    "command": "Write-Host ${input}"
+                }
+            ]
+        },
         "npm-git": {
             "description": "initialize as an npm project and a git repo",
             "tasks": [
