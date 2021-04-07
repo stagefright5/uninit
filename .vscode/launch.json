@@ -7,6 +7,14 @@
         {
             "type": "pwa-node",
             "request": "launch",
+            "name": "uninit",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}/bin/uninit.js",
+            "outFiles": ["${workspaceFolder}/**/*.js"]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
             "name": "run-tasks",
             "skipFiles": ["<node_internals>/**"],
             "program": "${workspaceFolder}/test/run-tasks.test.js",
