@@ -1,0 +1,21 @@
+{
+    "schemas": {
+        "npm-git": {
+            "description": "initialize as an npm project and a git repo",
+            "tasks": [
+                {
+                    "name": "init_git",
+                    "command": "git init ."
+                },
+                {
+                    "name": "git_stage",
+                    "command": "git add ."
+                },
+                {
+                    "name": "git_commit",
+                    "command": "git commit -m ${commit message}"
+                }
+            ]
+        }
+    }
+}
