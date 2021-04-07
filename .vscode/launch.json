@@ -7,9 +7,17 @@
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "'Run Tasks' Debugger",
+            "name": "run-tasks",
             "skipFiles": ["<node_internals>/**"],
             "program": "${workspaceFolder}/test/run-tasks.test.js",
+            "outFiles": ["${workspaceFolder}/**/*.js"]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "parse-command",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}/test/parse-command.test.js",
             "outFiles": ["${workspaceFolder}/**/*.js"]
         }
     ]
