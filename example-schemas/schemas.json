@@ -1,17 +1,21 @@
 {
     "schemas": {
-        "log-windows": {
+        "log": {
             "description": "Log user input",
             "tasks": [
                 {
                     "name": "echo",
-                    "command": "Write-Host ${input}"
+                    "command": "echo ${input}"
                 }
             ]
         },
         "npm-git": {
             "description": "initialize as an npm project and a git repo",
             "tasks": [
+                {
+                    "name": "npm_init_y",
+                    "command": "npm init -y"
+                },
                 {
                     "name": "init_git",
                     "command": "git init ."
@@ -22,7 +26,7 @@
                 },
                 {
                     "name": "git_commit",
-                    "command": "git commit -m ${commit message}"
+                    "command": "git commit -m \"${commit message}\""
                 }
             ]
         }
