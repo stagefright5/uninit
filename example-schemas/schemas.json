@@ -6,6 +6,14 @@
                 {
                     "name": "echo",
                     "command": "echo ${input}"
+                },
+                {
+                    "name": "echo_concat",
+                    "command": "echo \"input_repeated\""
+                },
+                {
+                    "name": "echo_concat",
+                    "command": "echo \"${input} ${input}_repeated\""
                 }
             ]
         },
@@ -14,7 +22,7 @@
             "tasks": [
                 {
                     "name": "create_dir",
-                    "command": "mkdir ${dir_name}"
+                    "command": "mkdir ${dir_name} && cd ${dir_name}"
                 },
                 {
                     "name": "npm_init_y",
